@@ -46,7 +46,7 @@ const ChartWithRx: React.FC = () => {
 
     chartRef.current = chart;
 
-    const seriesA = chart
+    const lineA = chart
       .addLineSeries()
       .setName("Line A")
       .setStrokeStyle(
@@ -55,7 +55,7 @@ const ChartWithRx: React.FC = () => {
           fillStyle: new SolidFill({ color: ColorRGBA(255, 0, 0) }),
         })
       );
-    const seriesB = chart
+    const lineB = chart
       .addLineSeries()
       .setName("Line B")
       .setStrokeStyle(
@@ -64,7 +64,7 @@ const ChartWithRx: React.FC = () => {
           fillStyle: new SolidFill({ color: ColorRGBA(0, 0, 255) }),
         })
       );
-    const seriesC = chart
+    const lineC = chart
       .addLineSeries()
       .setName("Line C")
       .setStrokeStyle(
@@ -74,15 +74,15 @@ const ChartWithRx: React.FC = () => {
         })
       );
 
-    seriesA.add(dataA);
-    seriesB.add(dataB);
-    seriesC.add(dataC);
+    lineA.add(dataA);
+    lineB.add(dataB);
+    lineC.add(dataC);
 
-    seriesRef.current = [seriesA, seriesB, seriesC];
+    seriesRef.current = [lineA, lineB, lineC];
 
-    const subA = showA$.subscribe((visible) => seriesA.setVisible(visible));
-    const subB = showB$.subscribe((visible) => seriesB.setVisible(visible));
-    const subC = showC$.subscribe((visible) => seriesC.setVisible(visible));
+    const subA = showA$.subscribe((visible) => lineA.setVisible(visible));
+    const subB = showB$.subscribe((visible) => lineB.setVisible(visible));
+    const subC = showC$.subscribe((visible) => lineC.setVisible(visible));
 
     showA$.next(true);
     showB$.next(true);
